@@ -13,3 +13,13 @@ class Book (models.Model):
     longDescription = models.TextField(null=True)
     # status = models.CharField(max_length=256, null=True)
     # authors = models.CharField(max_length=256, null=True)
+
+    def __str__(self):
+        # to return as title
+        return self.title
+
+
+class Review(models.Model):
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now=True)
+    book_id = models.BigIntegerField(default=1)
