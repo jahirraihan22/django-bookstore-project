@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-  <head>
-    <title>Books store</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <section class="py-10">
+{% extends 'books/base.html' %}
+
+{% block title %}
+  Booktore
+{% endblock  %}
+
+{% block content %}
       <h1 class="text-center text-3xl">Django Book store</h1>
       <div class="grid grid-cols-4 gap-4">
         {% for book in books %}
@@ -18,6 +16,4 @@
         </a>
         {% endfor %}
       </div>
-    </section>
-  </body>
-</html>
+{% endblock %}
