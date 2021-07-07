@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-12 mt-4">
                     <h4>Reviews</h4>
-                    {% for review in reviews %}
+                    {% for review in book.review_set.all %}
                         <p class="mt-1 text-secondary">{{ review.body }}</p>
                     {% endfor %}
                 </div>

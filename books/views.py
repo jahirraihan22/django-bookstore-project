@@ -1,30 +1,40 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from books.models import Book, Review
-from django.http import Http404
+from django.views import generic
 
 
-def index(request):
-    booksData = Book.objects.all()
-    context = {'books': booksData}
-    return render(request, 'books/index.html', context)
+class BookListView(generic.ListView):
+    context_object_name = 'books'
+
+    def get_queryset(self):
+        return Book.objects.all()
 
 
-def show(request, id):
-    # try:
-    #     singlebook = Book.objects.get(pk=id)
-    # except Book.DoesNotExist:
-    #     raise Http404('Book not found')
+# def index(request):
+#     booksData = Book.objects.all()
+#     context = {'books': booksData}
+#     return render(request, 'books/index.html', context)
 
-    # to use shortcut findorfail() type
-    singlebook = get_object_or_404(Book, pk=id)
-    reviews = Review.objects.filter(book_id=id).order_by('-created_at')
+class BookDetailView(generic.DetailView):
+    model = Book
 
-    context = {
-        'book': singlebook,
-        'reviews': reviews,
-    }
 
-    return render(request, 'books/show.html', context)
+# def show(request, id):
+#     # try:
+#     #     singlebook = Book.objects.get(pk=id)
+#     # except Book.DoesNotExist:
+#     #     raise Http404('Book not found')
+
+#     # to use shortcut findorfail() type
+#     singlebook = get_object_or_404(Book, pk=id)
+#     reviews = Review.objects.filter(book_id=id).order_by('-created_at')
+
+#     context = {
+#         'book': singlebook,
+#         'reviews': reviews,
+#     }
+
+#     return render(request, 'books/show.html', context)
 
 
 def review(request, id):

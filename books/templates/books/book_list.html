@@ -10,7 +10,7 @@
       <h1 class="text-center text-3xl">Django Book store</h1>
       <div class="grid grid-cols-4 gap-4">
         {% for book in books %}
-        <a href="{% url 'book.show' book.id %}" class="justify-self-center text-center my-4" target="_blank">
+        <a href="{% url 'book.show' book.id %}" class="justify-self-center text-center my-4">
           <div class="flex justify-center">
             <img src="{{ book.thumbnailUrl }}" width="200">
           </div>
