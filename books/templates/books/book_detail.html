@@ -23,7 +23,11 @@
                 </div>
                 <div class="col-md-12">
                     <h4>Author</h4>
-                    <p class="mt-3 text-secondary">{{ book.authors|join:", " }}</p>
+                    <div class="mt-3 text-secondary">
+                        {% for author in authors%}
+                            <a href="{% url 'author.books' author%}" style="text-decoration:none">{{ author }}</a>,
+                        {% endfor %}
+                    </div>
                 </div>
                 <div class="col-md-12">
                     <h4>Description</h4>

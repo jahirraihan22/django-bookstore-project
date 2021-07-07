@@ -21,6 +21,7 @@ class BookDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['reviews'] = context['book'].review_set.order_by('-created_at')
+        context['authors'] = context['book'].authors.all()
         return context
 
 
@@ -47,3 +48,9 @@ def review(request, id):
     newreview = Review(body=body, book_id=id)
     newreview.save()
     return redirect('/book')
+
+
+def author(request, author):
+    books = Book.objects.filter(authors__name=author)
+    context = {'books': books}
+    return render(request, 'books/book_list.html', context)
