@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.generic import ListView, DetailView
 from books.models import Book, Review
-from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class BookListView(generic.ListView):
-    context_object_name = 'books'
-
+class BookListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Book.objects.all()
 
@@ -15,7 +14,7 @@ class BookListView(generic.ListView):
 #     context = {'books': booksData}
 #     return render(request, 'books/index.html', context)
 
-class BookDetailView(generic.DetailView):
+class BookDetailView(LoginRequiredMixin, DetailView):
     model = Book
 
     def get_context_data(self, **kwargs):
@@ -52,5 +51,5 @@ def review(request, id):
 
 def author(request, author):
     books = Book.objects.filter(authors__name=author)
-    context = {'books': books}
+    context = {'book_list': books}
     return render(request, 'books/book_list.html', context)

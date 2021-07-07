@@ -1,13 +1,14 @@
-{% extends 'books/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
-  Booktore
+  Bookstore
 {% endblock  %}
 
 {% block content %}
-      <h1 class="text-center">Django Book store</h1>
+      <h1 class="text-center">My Book store</h1>
+      <hr>
         <div class="row">
-            {% for book in books %}
+            {% for book in book_list %}
             <div class="col-md-3 mb-3 text-center">
               <a href="{% url 'book.show' book.id %}" style="text-decoration:none;color:#000" class="mt-2">
                 <div class="col-md-3">

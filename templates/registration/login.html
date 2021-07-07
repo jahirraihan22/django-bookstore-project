@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="col-md-6 mt-5 mb-3 text-danger mx-auto">
+                {% if form.errors %}
+                <h5>Your username and password didn't match. Please try again.</h5>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                    <h5>Your account doesn't have access to this page. To proceed,
+                    please login with an account that has access.</h5>
+                    {% else %}
+                    <h5>Please login to see this page.</h5>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="col-md-6 mx-auto">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <h5 class="card-title">Login</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ form.username.label_tag }}</p>
+                        <div>{{ form.username }}</div>
+                        <p class="card-text">{{ form.password.label_tag }}</p>
+                        <div>{{ form.password }}</div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" class="btn btn-sm btn-outline-dark mt-2" value="login">
+                        <p><a href="{% url 'password_reset' %}" class="text-dark" style="text-decoration:none">Lost password?</a></p>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}">
+            </form>
+
+            {# Assumes you setup the password_reset view in your URLconf #}
+        </div>
+    </div>
+{% endblock %}
