@@ -125,6 +125,15 @@ LOGIN_REDIRECT_URL = '/book'
 LOGIN_URL = '/login'
 LOGOUT_REDIRECT_URL = '/login'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = BASE_DIR / 'tmp/app-messages'
+
+# SMTP email config
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'a994338d08d60c'
+EMAIL_HOST_PASSWORD = 'c36c0ac6f45802'
+EMAIL_PORT = '2525'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

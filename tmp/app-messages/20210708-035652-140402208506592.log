@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: jahirraihanseu45@gmail.com
+Date: Thu, 08 Jul 2021 03:56:52 -0000
+Message-ID: <162571661292.27282.5635527934166305623@jahir-Inspiron-5567>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/Mg/apg8as-c22c429d1d0761d5817c72c1c0ca1db9/
+
+Your username, in case you’ve forgotten: jahirraihan
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
