@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DetailView
 from books.models import Book, Review
+from django.core.files.storage import FileSystemStorage
+from books.form import ReviewForm
 # from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -21,6 +23,7 @@ class BookDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['reviews'] = context['book'].review_set.order_by('-created_at')
         context['authors'] = context['book'].authors.all()
+        context['form'] = ReviewForm()
         return context
 
 
@@ -44,10 +47,26 @@ class BookDetailView(DetailView):
 
 def review(request, id):
     if request.user.is_authenticated:
-        body = request.POST['review']
-        newreview = Review(body=body, book_id=id, user=request.user)
-        newreview.save()
-    return redirect('/book')
+        # body = request.POST['body']
+        # newReview = Review(body=body, book_id=id,
+        #                    user=request.user)
+
+        # if len(request.FILES) != 0:
+        #     image = request.FILES['image']
+        #     fs = FileSystemStorage()
+        #     name = fs.save(image.name, image)
+        #     newReview.image = fs.url(name)
+        # newReview.save()
+
+        newReview = Review(book_id=id,
+                           user=request.user)
+        form = ReviewForm(request.POST, request.FILES, instance=newReview)
+
+        if form.is_valid():
+            form.save()
+        else:
+            print('Invalid request')
+    return redirect(f'/book/{id}')
 
 
 def author(request, author):
