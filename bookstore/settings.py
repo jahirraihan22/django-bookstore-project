@@ -134,6 +134,10 @@ EMAIL_HOST_USER = 'a994338d08d60c'
 EMAIL_HOST_PASSWORD = 'c36c0ac6f45802'
 EMAIL_PORT = '2525'
 
+# image upload config
+MEDIA_ROOT = 'media'
+MEDIA_URL = 'media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

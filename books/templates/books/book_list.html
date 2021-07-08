@@ -12,7 +12,7 @@
             <div class="col-md-3 mb-3 text-center">
               <a href="{% url 'book.show' book.id %}" style="text-decoration:none;color:#000" class="mt-2">
                 <div class="col-md-3">
-                  <img src="{{ book.thumbnailUrl }}" width="200">
+                  <img src="{{ book.image.url }}" width="200">
                 </div>
                   <p class="mb-2">{{ book.title }}</p>
               </a>

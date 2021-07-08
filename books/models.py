@@ -21,6 +21,7 @@ class Book (models.Model):
     longDescription = models.TextField(null=True)
     # status = models.CharField(max_length=256, null=True)
     authors = models.ManyToManyField(Author)
+    image = models.ImageField(upload_to="images", null=True)
 
     def __str__(self):
         # to return as title
